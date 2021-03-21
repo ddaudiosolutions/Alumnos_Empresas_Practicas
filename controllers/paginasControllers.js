@@ -10,28 +10,36 @@ const paginaInicio = (req, res)=> {
 }
 
 const paginaEmpresas = async (req, res)=> {
-    const empresas = await Empresa.findAll()
+    
+    try
+    {const empresas = await Empresa.findAll()
    // console.log(empresas)
-    empresas.forEach(empresa=> console.log(empresa.EMPRESA))
+    //empresas.forEach(empresa=> console.log(empresa.EMPRESA))
     
     res.render('listadoEmpresas', {
         pagina: 'Listado Empresas',
         empresas,
 
-    });
+    })}
+    catch (error){
+        console.log(error)
+    }
+    
+    
 }
 
 
 
 const paginaAlumnos = async(req, res)=>{
-    const alumnos = await Alumno.findAll()
-   // console.log(alumnos)
-    alumnos.forEach(alumno=>console.log(alumno.nombreAl))
-
+    try{
+    const alumnos = await Alumno.findAll() 
     res.render('listadoAlumnos', {
         pagina:'Listado Alumnos',
         alumnos
-    })
+    })}
+    catch{ (error)
+        console.log(error)
+    }
 }
 
 const paginaNuevoAlumno = async(req, res)=>{

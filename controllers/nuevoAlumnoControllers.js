@@ -1,7 +1,27 @@
+import {Alumno} from '../models/Alumnos.js'
+const guardarNuevoAlumno = async (req, res)=>{
 
-const guardarNuevoAlumno = (req, res)=>{
+    const {cursoAl, nombreAl, localidadAl, emailAl, empresaAl, contactoEmp, practicas} = req.body;
 
-    console.log(req.body)
+    try{
+        await Alumno.create({
+            
+            cursoAl, 
+            nombreAl, 
+            localidadAl, 
+            emailAl, 
+            empresaAl, 
+            contactoEmp, 
+            practicas
+
+        });
+
+        res.redirect('/')
+
+    }
+    catch (error)
+    {console.log(error)}
+
 }
 export {
     guardarNuevoAlumno

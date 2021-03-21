@@ -46,26 +46,26 @@ html(lang='en')
         .form-row
           .form-group.col-md-4
             label(for='empresa')  Empresa                                  
-            input#nombreEmp.form-control(type='text', placeholder='Nombre Empresa', name="Nombre_empresa")
+            input#EMPRESA.form-control(type='text', placeholder='Nombre Empresa', name="EMPRESA")
           |                 
           .form-group.col-md-4
             label(for='nombre')  Contacto                                  
-            input#nombreResp.form-control(type='text', placeholder='Nombre Responsable', name="responsable")
+            input#CONTACTO.form-control(type='text', placeholder='Nombre Responsable', name="CONTACTO")
           |                         
           |                 
           .form-group.col-md-4
             label(for='email')  Email                                 
-            input#emailResp.form-control(type='text', placeholder='Email Responsable', name="emailEmp")
+            input#EMAIL.form-control(type='text', placeholder='Email Responsable', name="EMAIL")
         |            
         .form-row
           .form-group.col-md-4
             label(for='telefono')  Telefono                           
-            input#telefonResp.form-control(type='text', placeholder='Telefono Responsable', name="telefonoResp")
+            input#TELEFONO.form-control(type='text', placeholder='Telefono Responsable', name="TELEFONO")
           |             
           |                 
           .form-group.col-md-4
             label(for='practicas')  Practicas                                 
-            select(name="Practicas").form-control
+            select(name="PRACTICAS").form-control
                 
                each practica in tiposPracticas 
                   option=practica 
