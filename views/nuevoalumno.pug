@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |    
+    |     
+    link(rel='stylesheet', href='css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |
+    
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title= pagina
+  body
+    .itemH2
+      h2= pagina
+    |     
+    .row
+      form(action='/nuevoalumno' method='POST').col-md-10.offset-md-1                  
+        .form-row
+          .form-group.col-md-4
+         
+            label(for='cursoAl') Curso                                 
+            input#cursoAl(type="text", placeholder='Curso Alumno', name="cursoAl", class='form-control')                         
+          .form-group.col-md-4
+            label(for='nombreAl') Nombre                                 
+            input#nombreAl(type="text", placeholder='Nombre Alumno', name="nombreAl", class='form-control')                
+          .form-group.col-md-4
+            label(for='localidadAl') Localidad                
+            input#localidadAl(class="form-control" type='text', placeholder='Apellidos Alumno', name="localidadAl")
+   
+        .form-row
+          .form-group.col-md-4
+            label(for='emailAl') Email                               
+            input#emailAl(type='text', placeholder='Email Alumno', name="emailAl", class="form-control")
+                      
+          .form-group.col-md-4
+            label(for='telefonoAl') Telefono                             
+            input#telefonoAl(type='text', placeholder='Telefono Alumno', name="telefonoAl", class="form-control")
+          |                 
+          .form-group.col-md-4
+                
+                label(for='practicas') Practicas 
+                select(name="practicas" multiple).form-control                
+                  each practica in tiposPracticas 
+                    option=practica
+                  
+        |             
+        |             
+        .form-row
+          .form-group.col-md-4
+            label(for='contactoEmp') Contacto_Emp                            
+            input#contactoEmp(type='text', placeholder='Contacto_Emp', name="contactoEmp", class="form-control")               
+          .form-group.col-md-4
+            label(for='empresaAl') Empresa                         
+            input#empresaAl(type='text', placeholder='Empresa', name="empresaAl", class="form-control")
+                 
+        .btn.col-md-12
+          
+          input(type="submit", value='Guardar').btn.btn-success
+    |     
+    .itemH2
+      h2 _________________
+    |     
+    |     
+   

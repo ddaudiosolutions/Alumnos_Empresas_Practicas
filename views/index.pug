@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    |     
+    title= pagina
+  body
+    div(style='text-align: center')
+      img(src='/img/indice.png')
+    |   
+    .contenedor
+      .titulo BASE DE DATOS DE PR&Aacute;CTICAS CEF 
+      |       
+      |     
+      .row.justify-content-md-center(style='padding-bottom: 35px ;')
+        .col-md-2.text-center
+          a.btn-lg.btn-primary.btn-block(href='/listadoalumnos') Alumnos
+        |            
+        |                   
+        |                 
+        .col-md-2.text-center
+          a.btn-lg.btn-warning.btn-block(href='/listadoempresas') Empresas
+        |                 
+        .col-md-2.text-center
+          a.btn-lg.btn-danger.btn-block(href='/nuevoalumno') Nuevo Alumno
+        |                 
+        .col-md-2.text-center
+          a.btn-lg.btn-primary.btn-block(href='/nuevaempresa') Nueva Empresa
+    |       
+    .itemH2
+      h2 BUSCADOR DE PR&Aacute;CTICAS
+    |     
+    #Buscador.row.col-md-12.offset-md-4(style='margin-top: 20px')
+      .form-group.col-md-2
+        label(for='curso') Curso
+        |         
+        select#curso.form-control
+          option(value='') Seleccione
+          |           
+          option(value='CFGSS') CFGSS
+          |           
+          option(value='CFGSR') CFGSR
+          |           
+          option(value='CFGSI') CFGSI
+          |           
+          option(value='CFGSA') CFGSA
+          |           
+          option(value='CFGSP') CFGSP
+          |           
+          option(value='CFGMVDJ') CFGMVDJ
+      |         
+      .form-group.col-md-2
+        label(for='practicas') Pr&aacute;cticas
+        |             
+        select#practicas.form-control
+          option(value='') Seleccione
+          //
+            <option value="sonido_ficcion">Sonido_Ficción</option>
+            <option value="sonido_directo">Sonido_Directo</option>
+            <option value="estudio">Estudio</option>
+            <option value="radio">Radio</option>
+            <option value="television">Televisión</option>
+            <option value="teatro">Teatro</option>
+    |     
+    #btnBuscar.btn.btn-success.col-md-2.offset-md-5(type='button')  BUSCAR 
+    div
+      table.table.table-hover
+        tbody#listado_Empresas
+    |    
+    |     
+    |     
+    script(src='/js/app.js', type='module')
+    |     
+    script(src='js/js/bootstrap.min.js')

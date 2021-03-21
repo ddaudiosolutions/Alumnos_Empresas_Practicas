@@ -1,0 +1,45 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |   
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    link(rel='stylesheet', href='/css/table.css')
+    |    
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title Document
+  body#body1
+    table.table
+      thead.thead-dark
+          tr           
+            th(scope="col") Empresa                          
+            th(scope="col") Contacto                          
+            th(scope="col") E-MAIL                         
+            th(scope="col") TELEFONO                           
+            th(scope="col") PRACTICAS                          
+            th(scope="col") Editar
+      
+    
+      
+          each empresa in empresas
+                  tr
+                    td= empresa.EMPRESA                  
+                    td= empresa.CONTACTO                  
+                    td= empresa.EMAIL 
+                    td= empresa.TELEFONO
+                    td= empresa.PRACTICAS 
+                    td EDITAR
+                  
+    
+    
+
+    |
+    button.btn.btn-success(type='button', onclick="window.location='/'") Volver al Menu
+    | 
+    h2 nueva linea   
+    |     
+    script(src='/js/mostrarEmpresas.js', type='module')

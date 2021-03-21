@@ -1,0 +1,87 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |    
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title NUEVA EMPRESA
+  body
+    .itemH2
+      h2 NUEVA EMPRESA
+    |     
+    .row
+      form(action="/nuevaempresa" method="POST").col-md-10.offset-md-1
+        .form-row
+          .form-group.col-md-4
+            label(for='gm')  GM                                
+            input#gm.form-control(type='text')
+          |                 
+          .form-group.col-md-4
+            label(for='gsr')  GSR                                
+            input#gsr.form-control(type='text')
+          |                 
+          .form-group.col-md-4
+            label(for='gsi')  GSI                                 
+            input#gsi.form-control(type='text')
+        |             
+        .form-row
+          .form-group.col-md-4
+            label(for='gss')  GSS                               
+            input#gss.form-control(type='text')
+          |                 
+          .form-group.col-md-4
+            label(for='gsa')  GSA                                  
+            input#gsa.form-control(type='text')
+          |                 
+          .form-group.col-md-4
+            label(for='gsp')  GSP                                
+            input#gsp.form-control(type='text')
+        |             
+        .form-row
+          .form-group.col-md-4
+            label(for='empresa')  Empresa                                  
+            input#nombreEmp.form-control(type='text', placeholder='Nombre Empresa', name="Nombre_empresa")
+          |                 
+          .form-group.col-md-4
+            label(for='nombre')  Contacto                                  
+            input#nombreResp.form-control(type='text', placeholder='Nombre Responsable', name="responsable")
+          |                         
+          |                 
+          .form-group.col-md-4
+            label(for='email')  Email                                 
+            input#emailResp.form-control(type='text', placeholder='Email Responsable', name="emailEmp")
+        |            
+        .form-row
+          .form-group.col-md-4
+            label(for='telefono')  Telefono                           
+            input#telefonResp.form-control(type='text', placeholder='Telefono Responsable', name="telefonoResp")
+          |             
+          |                 
+          .form-group.col-md-4
+            label(for='practicas')  Practicas                                 
+            select(name="Practicas").form-control
+                
+               each practica in tiposPracticas 
+                  option=practica 
+          |             
+          .form-group.col-md-4
+            label(for='observaciones')  Observaciones                             
+            input#observaciones.form-control(type='text', name="observaciones")
+          |             
+          
+        |             
+        |            
+        .btn.col-md-12
+          button.btn.btn-success(type='submit')  Agregar Empresa
+    |     
+    .itemH2
+      h2 ___
+    |     
+    |     
+    script(src='/js/nuevaEmpresa.js', type='module')
