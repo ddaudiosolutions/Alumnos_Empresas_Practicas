@@ -18,5 +18,6 @@ export const Empresa = db.define('Empresas', {
         PRACTICAS: {
             type: Sequelize.STRING
         },
+       
 
 })

@@ -23,7 +23,6 @@ html(lang='en')
             th(scope="col") PRACTICAS                          
             th(scope="col") Editar
       
-    
       
           each empresa in empresas
                   tr
@@ -31,9 +30,16 @@ html(lang='en')
                     td= empresa.CONTACTO                  
                     td= empresa.EMAIL 
                     td= empresa.TELEFONO
-                    td= empresa.PRACTICAS 
-                    td EDITAR
-                  
+                    td= empresa.PRACTICAS
+                    td
+                      button() mostrar 
+                         a.postTitle(onclick=`verId(${JSON.stringify(empresa.id)})`)=empresa.id
+                          script.   
+                             function verId(idempresa){
+                                  let valorId = idempresa
+                                  console.log(valorId)
+                                  }
+                      
     
     
 

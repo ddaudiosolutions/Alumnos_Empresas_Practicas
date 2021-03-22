@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title MOSTRAR EMPRESA
+  body
+    .itemH2
+      h2 MOSTRAR EMPRESA
+    |     
+    .body
+      table.table
+        thead.thead-dark
+          tr           
+            th(scope="col") Empresa                          
+            th(scope="col") Contacto                          
+            th(scope="col") E-MAIL                         
+            th(scope="col") TELEFONO                           
+            th(scope="col") PRACTICAS                          
+            th(scope="col") Editar
+          
+          each empresa in detallesEmpresa
+                tr
+                    td= empresa.EMPRESA                  
+                    td= empresa.CONTACTO                  
+                    td= empresa.EMAIL 
+                    td= empresa.TELEFONO
+                    td= empresa.PRACTICAS
+                    td= empresa.id
+                    td
+                      button(type='button', value=`${empresa.id}`).form-control Mostrar
+              
+                   
+        
+    |     
+    .itemH2
+      h2 ___
+    |     
+    |     

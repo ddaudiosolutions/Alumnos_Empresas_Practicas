@@ -5,7 +5,10 @@ import {
         paginaEmpresas, 
         paginaAlumnos, 
         paginaNuevoAlumno,
-        paginaNuevaEmpresa
+        paginaNuevaEmpresa,
+        paginaEditarEmpresa,
+        paginaDetallesEmpresa
+
     } from '../controllers/paginasControllers.js'
 
 import {
@@ -30,7 +33,11 @@ router.post('/nuevaempresa', guardarNuevaEmpresa)
 
 router.get('/listadoempresas', paginaEmpresas);
 
+router.get('/mostrarempresa', paginaDetallesEmpresa)
+
 router.get('/listadoalumnos', paginaAlumnos);
+
+router.get('/editarEmpresa', paginaEditarEmpresa)
 
 
 
