@@ -33,7 +33,7 @@ router.post('/nuevaempresa', guardarNuevaEmpresa)
 
 router.get('/listadoempresas', paginaEmpresas);
 
-router.get('/mostrarempresa', paginaDetallesEmpresa)
+router.get('/:id', paginaDetallesEmpresa)
 
 router.get('/listadoalumnos', paginaAlumnos);
 

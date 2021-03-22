@@ -32,13 +32,8 @@ html(lang='en')
                     td= empresa.TELEFONO
                     td= empresa.PRACTICAS
                     td
-                      button() mostrar 
-                         a.postTitle(onclick=`verId(${JSON.stringify(empresa.id)})`)=empresa.id
-                          script.   
-                             function verId(idempresa){
-                                  let valorId = idempresa
-                                  console.log(valorId)
-                                  }
+                      a(href=`/${empresa.id}`)
+                        button(type= button).form-control
                       
     
     

@@ -74,9 +74,9 @@ const paginaNuevoAlumno = async(req, res)=>{
 }
 
 const paginaDetallesEmpresa = async (req, res)=> {
-    
-    
-    let idValue = '12';//posant es valor manual funciona PERÒ VULL QUE AQUEST VALOR VENGUI DES LISTADOEMPRESAS.PUG
+    const {id} = req.params
+    console.log(id)
+    let idValue = id;//posant es valor manual funciona PERÒ VULL QUE AQUEST VALOR VENGUI DES LISTADOEMPRESAS.PUG
     
     const detallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS'], 
         where:{id:`${idValue}`}})
