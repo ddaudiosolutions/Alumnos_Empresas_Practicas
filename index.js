@@ -17,11 +17,13 @@ app.set('view engine', 'pug')
 
 // AGREGAR BODYPARSER PARA LEER LOS DATOS DEL FORMULARIO
 
-
-app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));//DEBE IR SIEMPRE ANTES DEL ROUTER
+app.use(express.static('public'))
+
+
 
 app.use('/', router);
+
 
 
 app.listen(port, ()=> {

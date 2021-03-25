@@ -5,9 +5,9 @@ import {
         paginaEmpresas, 
         paginaAlumnos, 
         paginaNuevoAlumno,
-        paginaNuevaEmpresa,
-        paginaEditarEmpresa,
-        paginaDetallesEmpresa
+        paginaNuevaEmpresa,        
+        paginaDetallesEmpresa,
+        paginaEditarEmpresa
 
     } from '../controllers/paginasControllers.js'
 
@@ -18,6 +18,11 @@ import {
 import { 
         guardarNuevaEmpresa 
     } from '../controllers/nuevaEmpresaControllers.js';
+
+import{
+    guardarEdicionEmpresa
+} from '../controllers/editarEmpresaControllers.js';
+
 
 const router = express.Router();
 
@@ -35,9 +40,13 @@ router.get('/listadoempresas', paginaEmpresas);
 
 router.get('/:id', paginaDetallesEmpresa)
 
+router.get('/editarempresa/:id', paginaEditarEmpresa)
+
+router.post('/editarempresa/:id', guardarEdicionEmpresa)
+
 router.get('/listadoalumnos', paginaAlumnos);
 
-router.get('/editarEmpresa', paginaEditarEmpresa)
+
 
 
 

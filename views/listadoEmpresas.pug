@@ -32,8 +32,11 @@ html(lang='en')
                     td= empresa.TELEFONO
                     td= empresa.PRACTICAS
                     td
-                      a(href=`/${empresa.id}`)
-                        button(type= button).form-control
+                      a(href=`/${empresa.id}`) 
+                        button(type= button).form-control Mostrar
+                    td
+                      a(href=(`/editarempresa/${empresa.id}`)) 
+                        button(type= button).form-control Editar    
                       
     
     

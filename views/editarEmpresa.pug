@@ -1,0 +1,42 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title EDITAR EMPRESA
+  body
+    .itemH2
+      h2 EDITAR EMPRESA
+    |     
+    .body
+      
+        table.table
+        thead.thead-dark
+              
+          
+                each empresa in editarDetallesEmpresa
+                  
+                    tr
+                      form(action="/editarempresa/:id" method="POST").col-md-10.offset-md-1
+                        label(for="EMPRESA") EMPRESA
+                        input#EMPRESA(type="text", value=`${empresa.EMPRESA}`, name='EMPRESA').form-control                 
+                        input#CONTACTO(type="text", value=`${empresa.CONTACTO}`, name='CONTACTO').form-control                     
+                        input#EMAIL(type="text",value=`${empresa.EMAIL}`, name='EMAIL').form-control     
+                        input#TELEFONO(type="text", value=`${empresa.TELEFONO}`, name='TELEFONO').form-control    
+                        input#PRACTICAS(type="text", value=`${empresa.PRACTICAS}`, name='PRACTICAS').form-control    
+                        label(for="OBSERVACIONESl") OBSERVACIONES 
+                        textarea#OBSERVACIONES(class="form-control")= empresa.OBSERVACIONES       
+                                            
+                        button(type="submit").btn.btn-success Guardar Cambios
+                                 
+    .itemH2
+      h2 ___
+    |     
+    |     

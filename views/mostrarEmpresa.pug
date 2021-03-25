@@ -17,14 +17,17 @@ html(lang='en')
     |     
     .body
       table.table
-        thead.thead-dark
+        thead.thead-light
           tr           
             th(scope="col") Empresa                          
             th(scope="col") Contacto                          
             th(scope="col") E-MAIL                         
             th(scope="col") TELEFONO                           
-            th(scope="col") PRACTICAS                          
-            th(scope="col") Editar
+            th(scope="col") PRACTICAS    
+            th(scope="col") OBSERVACIONES                      
+            
+            
+             
           
           each empresa in detallesEmpresa
                 tr
@@ -33,11 +36,12 @@ html(lang='en')
                     td= empresa.EMAIL 
                     td= empresa.TELEFONO
                     td= empresa.PRACTICAS
-                    td= empresa.id
-                    td
-                      button(type='button', value=`${empresa.id}`).form-control Mostrar
-              
+                    
+           
+                td(scope="col") OBSERVACIONES 
+                  textarea(class="form-control", value=empresa.OBSERVACIONES)= empresa.OBSERVACIONES     
                    
+                       
         
     |     
     .itemH2
