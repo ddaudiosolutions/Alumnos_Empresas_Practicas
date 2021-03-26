@@ -29,12 +29,12 @@ const paginaEmpresas = async (req, res)=> {
 
 
 const paginaEditarEmpresa = async (req, res)=> {
-    const {id} = req.params
+    const {id} = (req.params)
     //console.log(id)
    let idValue = id;
     try
     {const editarDetallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
-        where:{id:`${idValue}`}})
+        where:{id: idValue}})
         editarDetallesEmpresa.forEach(empresa=>(console.log(empresa.id)))
     
         res.render('editarEmpresa', {
@@ -73,11 +73,11 @@ const paginaNuevoAlumno = async(req, res)=>{
 
 const paginaDetallesEmpresa = async (req, res)=> {
     const {id} = req.params
-    //console.log(id)
-    let idValue = id;//posant es valor manual funciona PERÒ VULL QUE AQUEST VALOR VENGUI DES LISTADOEMPRESAS.PUG
+    console.log('ESTO ES EL ID' + id)
+    
     
     const detallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
-        where:{id:`${idValue}`}})
+        where:{id : id}})
         detallesEmpresa.forEach(empresa=>console.log(empresa))
     
     res.render('mostrarEmpresa',{

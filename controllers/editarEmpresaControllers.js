@@ -5,8 +5,8 @@ import{Empresa} from '../models/Empresas.js'
 const guardarEdicionEmpresa = async(req, res)=>
 {
     const {id} = req.params
-    let idValue = id;
-    console.log(idValue)
+    //let idValue = id;
+    console.log('esto es el id = ' + '  ' + id)
             
            await  Empresa.update(
            {
@@ -16,10 +16,11 @@ const guardarEdicionEmpresa = async(req, res)=>
                     EMAIL: req.body.EMAIL,
                     TELEFONO: req.body.TELEFONO,
                     PRACTICAS: req.body.PRACTICAS,
-                    OBSERVACIONES: req.body.OBSERVACIONES
+                    OBSERVACIONES: req.body.OBSERVACIONES,
+                    id: req.body.id
                     
                 },
-                {where : { id : 26}}
+                {where : { id : id}}
             
             )
         

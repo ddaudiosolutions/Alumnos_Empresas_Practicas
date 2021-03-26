@@ -20,6 +20,11 @@ export const Empresa = db.define('Empresas', {
         },
         OBSERVACIONES: {
             type: Sequelize.STRING
+        },
+        id: {
+            type: Sequelize.NUMBER,
+            primaryKey: true
+
         }
        
 

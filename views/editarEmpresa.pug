@@ -19,22 +19,23 @@ html(lang='en')
       
         table.table
         thead.thead-dark
-              
-          
+
                 each empresa in editarDetallesEmpresa
                   
                     tr
-                      form(action="/editarempresa/:id" method="POST").col-md-10.offset-md-1
+                      form(action=`/editarempresa/${empresa.id}` method="POST").col-md-10.offset-md-1
                         label(for="EMPRESA") EMPRESA
                         input#EMPRESA(type="text", value=`${empresa.EMPRESA}`, name='EMPRESA').form-control                 
                         input#CONTACTO(type="text", value=`${empresa.CONTACTO}`, name='CONTACTO').form-control                     
                         input#EMAIL(type="text",value=`${empresa.EMAIL}`, name='EMAIL').form-control     
                         input#TELEFONO(type="text", value=`${empresa.TELEFONO}`, name='TELEFONO').form-control    
-                        input#PRACTICAS(type="text", value=`${empresa.PRACTICAS}`, name='PRACTICAS').form-control    
-                        label(for="OBSERVACIONESl") OBSERVACIONES 
-                        textarea#OBSERVACIONES(class="form-control")= empresa.OBSERVACIONES       
+                        input#PRACTICAS(type="text", value=`${empresa.PRACTICAS}`, name='PRACTICAS').form-control 
+                        input#id(type="text", value=`${empresa.id}`, name='id').form-control   
+                        label(for="OBSERVACIONES") OBSERVACIONES 
+                        textarea#OBSERVACIONES(class="form-control pb-4 mb-4" name='OBSERVACIONES')= empresa.OBSERVACIONES       
                                             
-                        button(type="submit").btn.btn-success Guardar Cambios
+                        div(class="d-flex justify-content-center mb-5")
+                          button(type="submit" ).btn.btn-success Guardar Cambios
                                  
     .itemH2
       h2 ___

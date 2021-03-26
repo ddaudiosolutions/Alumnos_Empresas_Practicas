@@ -37,9 +37,9 @@ html(lang='en')
                     td= empresa.TELEFONO
                     td= empresa.PRACTICAS
                     
-           
-                td(scope="col") OBSERVACIONES 
-                  textarea(class="form-control", value=empresa.OBSERVACIONES)= empresa.OBSERVACIONES     
+      each empresa in detallesEmpresa    
+          td(scope="col") OBSERVACIONES 
+            textarea(class="col. form-control", value=empresa.OBSERVACIONES)= empresa.OBSERVACIONES     
                    
                        
         
