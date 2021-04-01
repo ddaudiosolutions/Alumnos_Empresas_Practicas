@@ -23,6 +23,10 @@ export const Alumno = db.define('Alumnos', {
     },
     practicas: {
         type: Sequelize.STRING
+    },
+    OBSERVACIONES:{
+        type: Sequelize.STRING
     }
+
 
 })

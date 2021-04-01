@@ -1,0 +1,58 @@
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title MOSTRAR ALUMNO
+  body
+    .itemH2
+      h2 MOSTRAR ALUMNO
+    |     
+    .body
+      table.table
+        thead.thead-light
+          tr           
+            th(scope="col") cursoAl                          
+            th(scope="col") nombreAl                          
+            th(scope="col") localidadAl                       
+            th(scope="col") emailAl                           
+            th(scope="col") empresaAl    
+            th(scope="col") contactoEmp  
+            th(scope="col") practicas                     
+            
+            
+             
+          
+          each alumno in detallesAlumno
+                tr
+                    td= alumno.cursoAl                  
+                    td= alumno.nombreAl                  
+                    td= alumno.localidadAl 
+                    td= alumno.emailAl
+                    td= alumno.empresaAl
+                    td= alumno.contactoEmp
+                    td= alumno.practicas
+                    
+                    
+      each alumno in detallesAlumno    
+          tr
+            td(scope="col") OBSERVACIONES 
+              textarea(class="form-control textarea-autosize mb-4",  value=alumno.OBSERVACIONES)= alumno.OBSERVACIONES     
+
+      div(class="d-flex justify-content-center mb-4")
+        button.btn.btn-success(type='button', onclick="window.location='/'") Volver al Menu        
+                       
+        
+    |     
+    .itemH2
+      h2 ___
+    |     
+    |     

@@ -1,12 +1,19 @@
 import {Empresa} from '../models/Empresas.js'
 import {Alumno} from '../models/Alumnos.js'
 import tiposPracticas from '../public/tiposPracticas.js'
-
+import {practicasGradoMedio, practicasSonido} from '../public/seleccionPracticas.js';
+import {cursos} from '../public/tiposCursos.js';
+//import seleccionPracticas from '../public/seleccionPracticas.js'
 
 
 const paginaInicio = (req, res)=> {
     res.render('index', {
-        pagina: 'Inicio'
+        pagina: 'Inicio',
+        tiposPracticas,
+        practicasGradoMedio,
+        practicasSonido,
+        cursos
+        //seleccionPracticas 
     });
 }
 
@@ -17,9 +24,9 @@ const paginaEmpresas = async (req, res)=> {
    //console.log(empresas.id)
    // empresas.forEach(empresa=> console.log(empresa.id))
     
-    res.render('listadoEmpresas', {
-        pagina: 'Listado Empresas',
-        empresas,
+        res.render('listadoEmpresas', {
+            pagina: 'Listado Empresas',
+            empresas,
 
     })}
     catch (error){
@@ -49,33 +56,9 @@ const paginaEditarEmpresa = async (req, res)=> {
     
 }
 
-
-const paginaAlumnos = async(req, res)=>{
-    try{
-    const alumnos = await Alumno.findAll() 
-    res.render('listadoAlumnos', {
-        pagina:'Listado Alumnos',
-        alumnos
-    })}
-    catch{ (error)
-        console.log(error)
-    }
-}
-
-const paginaNuevoAlumno = async(req, res)=>{
-    
-    res.render('nuevoalumno.pug', {
-        pagina:'Nuevo Alumno',
-        tiposPracticas
-        
-    })
-}
-
 const paginaDetallesEmpresa = async (req, res)=> {
     const {id} = req.params
-    console.log('ESTO ES EL ID' + id)
-    
-    
+   
     const detallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
         where:{id : id}})
         detallesEmpresa.forEach(empresa=>console.log(empresa))
@@ -84,18 +67,78 @@ const paginaDetallesEmpresa = async (req, res)=> {
         pagina:'Mostrar Empresa',
         detallesEmpresa
     })
-    
 }
+
 
 const paginaNuevaEmpresa = async(req, res)=>{
     
     res.render('nuevaempresa.pug', {
         pagina:'Nueva Empresa',
         tiposPracticas
-
         
     })
 }
+
+
+const paginaAlumnos = async(req, res)=>{
+    try{
+        const alumnos = await Alumno.findAll() 
+        res.render('listadoAlumnos', {
+            pagina:'Listado Alumnos',
+            alumnos
+    })}
+    catch{ (error)
+        console.log(error)
+    }
+}
+
+const paginaEditarAlumno = async (req, res)=> {
+    const {id} = (req.params)
+    //console.log(id)
+   let idValue = id;
+    try
+    {const editarDetallesAlumno = await Alumno.findAll({attributes: ['cursoAl','nombreAl','localidadAl', 'emailAl', 'empresaAl', 'contactoEmp', 'practicas', 'OBSERVACIONES'], 
+        where:{id: idValue}})
+        editarDetallesAlumno.forEach(alumno=>(console.log(alumno.id)))
+    
+        res.render('editarAlumno', {
+            pagina: 'Editar Alumno',
+            editarDetallesAlumno,
+           
+
+    })}
+    catch (error){
+        console.log(error)
+    }
+    
+}
+
+const paginaDetallesAlumno = async (req, res)=> {
+    const {id} = req.params
+   
+    const detallesAlumno = await Alumno.findAll({attributes: ['cursoAl','nombreAl','localidadAl', 'emailAl', 'empresaAl', 'contactoEmp', 'practicas', 'OBSERVACIONES'], 
+        where:{id : id}})
+        detallesAlumno.forEach(alumno=>console.log(alumno))
+    
+    res.render('mostrarAlumno',{
+        pagina:'Mostrar Alumno',
+        detallesAlumno
+    })
+    
+}
+
+const paginaNuevoAlumno = async(req, res)=>{
+    const empresas  = await Empresa.findAll()
+    res.render('nuevoalumno.pug', {
+        pagina:'Nuevo Alumno',
+        tiposPracticas,
+        empresas,
+        
+        
+    })
+}
+
+
 
 
 
@@ -107,7 +150,10 @@ export {
     paginaNuevoAlumno,
     paginaNuevaEmpresa,
     paginaEditarEmpresa,
-    paginaDetallesEmpresa
+    paginaDetallesEmpresa,
+    paginaDetallesAlumno,
+    paginaEditarAlumno
+    
     
 
 }

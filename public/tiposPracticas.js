@@ -1,3 +1,5 @@
+ 
+ 
  const tiposPracticas = [
     ' ',
     'SonidoDirecto',    
@@ -22,6 +24,7 @@
     '3D',
 
 ]
+
 
 
 

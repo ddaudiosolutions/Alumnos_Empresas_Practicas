@@ -6,7 +6,7 @@ const guardarEdicionEmpresa = async(req, res)=>
 {
     const {id} = req.params
     //let idValue = id;
-    console.log('esto es el id = ' + '  ' + id)
+    console.log('guardar edicion en el id = ' + '  ' + id)
             
            await  Empresa.update(
            {

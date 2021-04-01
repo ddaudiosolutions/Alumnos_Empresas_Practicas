@@ -1,5 +1,3 @@
- //import {obtenerAlumno, mostrarAlumnos} from './alumnosAPI.js;'
- import {obtenerEmpresas} from './empresasAPI.js';
 
  const curso = document.querySelector('#curso')
  const practicas = document.querySelector('#practicas')
@@ -115,10 +113,7 @@ const practicasGradoMedio = [
              opcion.textContent = opcionesPracticas[i]
              practicas.appendChild(opcion)
          }
-         /*const opcion = document.createElement ('option')
-         opcion.value = practicasSonido
-         opcion.textContent= practicasSonido
-         practicas.appendChild(opcion)*/
+
      }
  }
 
@@ -133,53 +128,41 @@ const practicasGradoMedio = [
  let seleccion;
 
  practicas.addEventListener('change', e => {
-    datosBusqueda.practicas = e.target.value;
-   
+    datosBusqueda.practicas = e.target.value;   
 
    seleccion = `${datosBusqueda.practicas}`
-  // console.log(seleccion)    
+   console.log(seleccion)    
 })
 
 btnBuscar.addEventListener('click', mostrarSeleccionEmp)
 
-async function mostrarSeleccionEmp(){
+    async function mostrarSeleccionEmp(){
    
-    limpiarhtml(listadoempresas)
-    crearCabecera();
+        limpiarhtml(listadoempresas)
+        crearCabecera();
+        crearTabla();
    
+    /*const empresasSeleccion = async (req, res) => {
 
-    const empresas =  await obtenerEmpresas()
+        try 
+        { const empresas = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS'], 
+        where:{PRACTICAS: seleccion}})
+        empresas.forEach(empresa=>(console.log(empresas.EMPRESA)))
+        
+        }
+        catch(error){
+            console.log(error)
+        }
+    }*/
+
     
-    for (let i = 0; i<empresas.length; i++)
-    {
-      let empresasB = []
-
-        if(empresas[i].PRACTICAS.includes(seleccion)){
-            //console.log(empresas[i].PRACTICAS)
-           
-            empresasB.push(empresas[i])
-            empresasB.forEach(empresa => {
-
-                crearTabla(empresa)
-             
-            });
-   
-       }
-       else {
-           console.log(empresas[i].EMPRESA + ' ' + 'No tienen prácticas asignadas de' + ' ' + seleccion)
-       }
-       
-   }   
-   
    
     
 }
 
 function crearTabla(empresa)
 {
-    const { EMPRESA, PRACTICAS, id} = empresa;
-
-        
+    const { EMPRESA, PRACTICAS, id} = empresa;        
 
            const row = document.createElement('tr');
            row.classList.add('border','border-primary')
@@ -218,8 +201,6 @@ function crearTabla(empresa)
            row.appendChild(cMostrarEmp)
            row.appendChild(cEditarEmp)
 
-           
-
            listadoempresas.appendChild(row)        
 
 }
@@ -246,3 +227,4 @@ function crearCabecera()
 
 }
  
+//export {seleccion}

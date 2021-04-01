@@ -43,7 +43,7 @@ html(lang='en')
           .form-group.col-md-4
                 
                 label(for='practicas') Practicas 
-                select(name="practicas" multiple).form-control                
+                select(name="practicas").form-control                
                   each practica in tiposPracticas 
                     option=practica
                   
@@ -54,8 +54,11 @@ html(lang='en')
             label(for='contactoEmp') Contacto_Emp                            
             input#contactoEmp(type='text', placeholder='Contacto_Emp', name="contactoEmp", class="form-control")               
           .form-group.col-md-4
-            label(for='empresaAl') Empresa                         
-            input#empresaAl(type='text', placeholder='Empresa', name="empresaAl", class="form-control")
+            label(for='empresaAl') Empresa 
+            select(name="empresa").form-control 
+              each empresa in empresas
+                option= empresa.EMPRESA              
+                  
                  
         .btn.col-md-12
           

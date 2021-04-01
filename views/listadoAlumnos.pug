@@ -15,8 +15,8 @@ html(lang='en')
     table.table
       thead.thead-dark
         tr
-          th#sortDate(scope='col') Curso
-          th#sortName(scope='col') Nombre                 
+          th(scope='col') Curso
+          th(scope='col') Nombre                 
           th(scope='col') Localidad                           
           th(scope='col') Email_Alumno                          
           th(scope='col') Contacto Alumno                           
@@ -33,7 +33,13 @@ html(lang='en')
                     td= alumno.emailAl 
                     td= alumno.empresaAl 
                     td= alumno.contactoEmp
-                    td= alumno.practicas                   
+                    td= alumno.practicas
+                    td
+                      a(href=`alumno/${alumno.id}`) 
+                        button(type= button).form-control Mostrar
+                    td
+                      a(href=(`/editaralumno/${alumno.id}`)) 
+                        button(type= button ).form-control Editar                     
                     
     // -  <button type="button" id="sortar">Sort</button>
     button.btn.btn-success(type='button', onclick="window.location='/'") Volver al Menu

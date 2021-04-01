@@ -19,7 +19,7 @@ html(lang='en')
       img(src='/img/indice.png')
     |   
     .contenedor
-      .titulo BASE DE DATOS DE PR&Aacute;CTICAS CEF 
+      .titulo BASE DE DATOS PARA FCT CEF 
       |       
       |     
       .row.justify-content-md-center(style='padding-bottom: 35px ;')
@@ -38,47 +38,61 @@ html(lang='en')
           a.btn-lg.btn-primary.btn-block(href='/nuevaempresa') Nueva Empresa
     |       
     .itemH2
-      h2 BUSCADOR DE PR&Aacute;CTICAS
+      h2 BUSCADOR DE PRÁCTICAS
     |     
     #Buscador.row.col-md-12.offset-md-4(style='margin-top: 20px')
+
+    
       .form-group.col-md-2
         label(for='curso') Curso
         |         
-        select#curso.form-control
-          option(value='') Seleccione
-          |           
-          option(value='CFGSS') CFGSS
-          |           
-          option(value='CFGSR') CFGSR
-          |           
-          option(value='CFGSI') CFGSI
-          |           
-          option(value='CFGSA') CFGSA
-          |           
-          option(value='CFGSP') CFGSP
-          |           
-          option(value='CFGMVDJ') CFGMVDJ
-      |         
+        select#curso(onchange='seleccionCurso(this)').form-control
+            each curso in cursos
+              option(value=curso.value selected=curso.select) #{curso}
+                
+
+                script.
+                 var cursoSeleccionado;
+                 function seleccionCurso(seleccion)
+                  {
+                      cursoSeleccionado = seleccion.value;
+                      return cursoSeleccionado
+                  }  
+                  console.log(`${cursoSeleccionado}`)
+                  
+
+
+
+    
       .form-group.col-md-2
-        label(for='practicas') Pr&aacute;cticas
-        |             
-        select#practicas.form-control
-          option(value='') Seleccione
-          //
-            <option value="sonido_ficcion">Sonido_Ficción</option>
-            <option value="sonido_directo">Sonido_Directo</option>
-            <option value="estudio">Estudio</option>
-            <option value="radio">Radio</option>
-            <option value="television">Televisión</option>
-            <option value="teatro">Teatro</option>
+          - var name = 'CFGMVDJ' 
+            case (`${curso}`)
+                when "CFGSS"
+                  label(for='practicas') practicasSonido         
+                  select#practicas.form-control
+                      each practica in practicasGradoMedio
+                        option= practica
+
+                when "CFGMVDJ"
+                  label(for='practicas') Prácticas         
+                  select#practicas.form-control
+                      each practica in practicasGradoMedio
+                        option= practica        
+
+                default 
+                  label(for='practicas') Prácticas         
+                  select#practicas.form-control
+                      each practica in tiposPracticas
+                        option= practica   
+     
     |     
-    #btnBuscar.btn.btn-success.col-md-2.offset-md-5(type='button')  BUSCAR 
-    div
-      table.table.table-hover
-        tbody#listado_Empresas
-    |    
-    |     
-    |     
-    script(src='/js/app.js', type='module')
-    |     
-    script(src='js/js/bootstrap.min.js')
+    #btnBuscar.btn.btn-success.col-md-2.offset-md-5(type='submit')  BUSCAR 
+     
+h3= `${curso}`
+    
+        
+  
+    
+    
+
+  script(src='js/js/bootstrap.min.js')

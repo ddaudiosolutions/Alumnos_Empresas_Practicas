@@ -38,9 +38,12 @@ html(lang='en')
                     td= empresa.PRACTICAS
                     
       each empresa in detallesEmpresa    
-          td(scope="col") OBSERVACIONES 
-            textarea(class="col. form-control", value=empresa.OBSERVACIONES)= empresa.OBSERVACIONES     
-                   
+          tr
+            td(scope="col") OBSERVACIONES 
+              textarea(class="form-control textarea-autosize mb-4",  value=empresa.OBSERVACIONES)= empresa.OBSERVACIONES     
+
+      div(class="d-flex justify-content-center mb-4")
+        button.btn.btn-success(type='button', onclick="window.location='/'") Volver al Menu        
                        
         
     |     

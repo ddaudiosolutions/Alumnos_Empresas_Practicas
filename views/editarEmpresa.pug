@@ -25,12 +25,17 @@ html(lang='en')
                     tr
                       form(action=`/editarempresa/${empresa.id}` method="POST").col-md-10.offset-md-1
                         label(for="EMPRESA") EMPRESA
-                        input#EMPRESA(type="text", value=`${empresa.EMPRESA}`, name='EMPRESA').form-control                 
-                        input#CONTACTO(type="text", value=`${empresa.CONTACTO}`, name='CONTACTO').form-control                     
-                        input#EMAIL(type="text",value=`${empresa.EMAIL}`, name='EMAIL').form-control     
-                        input#TELEFONO(type="text", value=`${empresa.TELEFONO}`, name='TELEFONO').form-control    
-                        input#PRACTICAS(type="text", value=`${empresa.PRACTICAS}`, name='PRACTICAS').form-control 
-                        input#id(type="text", value=`${empresa.id}`, name='id').form-control   
+                        input#EMPRESA(type="text", value=`${empresa.EMPRESA}`, name='EMPRESA').form-control.mb-3
+                        label(for="CONTACTO") CONTACTO                 
+                        input#CONTACTO(type="text", value=`${empresa.CONTACTO}`, name='CONTACTO').form-control.mb-3
+                        label(for="EMAIL") EMAIL                     
+                        input#EMAIL(type="text",value=`${empresa.EMAIL}`, name='EMAIL').form-control.mb-3
+                        label(for="TELEFONO") TELEFONO     
+                        input#TELEFONO(type="text", value=`${empresa.TELEFONO}`, name='TELEFONO').form-control.mb-3 
+                        label(for="PRACTICAS") PRACTICAS   
+                        input#PRACTICAS(type="text", value=`${empresa.PRACTICAS}`, name='PRACTICAS').form-control.mb-3
+                        label(for="id") id 
+                        input#id(type="text", value=`${empresa.id}`, name='id').form-control.mb-3   
                         label(for="OBSERVACIONES") OBSERVACIONES 
                         textarea#OBSERVACIONES(class="form-control pb-4 mb-4" name='OBSERVACIONES')= empresa.OBSERVACIONES       
                                             

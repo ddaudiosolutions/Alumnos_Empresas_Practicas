@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    |     
+    link(rel='stylesheet', href='/css/style.css')
+    |     
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |     
+    title EDITAR ALUMNO
+  body
+    .itemH2
+      h2 EDITAR ALUMNO
+    |     
+    .body
+      
+        table.table
+        thead.thead-dark
+
+                each alumno in editarDetallesAlumno
+                  
+                    tr
+                      form(action=`/editaralumno/${alumno.id}` method="POST").col-md-10.offset-md-1
+                        label(for = 'CURSO') CURSO
+                        input#CURSO(type="text", value=`${alumno.cursoAl}`, name='cursoAl').form-control.mb-3
+                        label(for = 'NOMBRE') NOMBRE                
+                        input#NOMBRE(type="text", value=`${alumno.nombreAl}`, name='nombreAl').form-control.mb-3   
+                        label(for = 'LOCALIDAD') LOCALIDAD                 
+                        input#LOCALIDAD(type="text",value=`${alumno.localidadAl}`, name='localidadAl').form-control.mb-3   
+                        label(for = 'EMAIL') EMAIL 
+                        input#EMAIL(type="text", value=`${alumno.emailAl}`, name='emailAl').form-control.mb-3   
+                        label(for = 'EMPRESA') EMPRESA 
+                        input#EMPRESA(type="text", value=`${alumno.empresaAl}`, name='empresaAl').form-control.mb-3
+                        label(for = 'CONTACTO EMP ') CONTACTO EMP 
+                        input#CONTACTOEMP(type="text", value=`${alumno.contactoEmp}`, name='contactoEmp').form-control.mb-3  
+                        label(for = 'PRACTICAS') PRACTICAS 
+                        input#PRACTICAS(type="text", value=`${alumno.practicas}`, name='practicas').form-control.mb-3  
+                               
+                                            
+                        div(class="d-flex justify-content-center mb-5")
+                          button(type="submit" ).btn.btn-success Guardar Cambios
+                                 
+    .itemH2
+      h2 ___
+    |     
+    |     
