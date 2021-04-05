@@ -3,17 +3,39 @@ import {Alumno} from '../models/Alumnos.js'
 import tiposPracticas from '../public/tiposPracticas.js'
 import {practicasGradoMedio, practicasSonido} from '../public/seleccionPracticas.js';
 import {cursos} from '../public/tiposCursos.js';
-//import seleccionPracticas from '../public/seleccionPracticas.js'
+import buscadorEmpresas from '../controllers/buscadorEmpresas.js'
+import { request } from 'express';
 
 
-const paginaInicio = (req, res)=> {
+
+
+const paginaInicio = async (req, res)=> {
+    
+    const {curso} = req.body
+    console.log(curso)
+   // let empValue = EMPRESA //recibir valor de la opcion seleccionada
+    
+    
+    const seleccionEmpresas = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 
+    'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
+    where:{PRACTICAS : curso}})
+    seleccionEmpresas.forEach(empresa=>console.log(empresa))
+    
+    
+
     res.render('index', {
         pagina: 'Inicio',
         tiposPracticas,
         practicasGradoMedio,
         practicasSonido,
-        cursos
-        //seleccionPracticas 
+        cursos,
+        seleccionEmpresas,
+        buscadorEmpresas,
+        
+        
+        
+       
+                //seleccionPracticas 
     });
 }
 
@@ -21,8 +43,7 @@ const paginaEmpresas = async (req, res)=> {
     
     try
     {const empresas = await Empresa.findAll()
-   //console.log(empresas.id)
-   // empresas.forEach(empresa=> console.log(empresa.id))
+   
     
         res.render('listadoEmpresas', {
             pagina: 'Listado Empresas',
@@ -40,7 +61,8 @@ const paginaEditarEmpresa = async (req, res)=> {
     //console.log(id)
    let idValue = id;
     try
-    {const editarDetallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
+    {const editarDetallesEmpresa = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 
+        'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
         where:{id: idValue}})
         editarDetallesEmpresa.forEach(empresa=>(console.log(empresa.id)))
     
@@ -70,6 +92,7 @@ const paginaDetallesEmpresa = async (req, res)=> {
 }
 
 
+
 const paginaNuevaEmpresa = async(req, res)=>{
     
     res.render('nuevaempresa.pug', {
@@ -95,10 +118,11 @@ const paginaAlumnos = async(req, res)=>{
 const paginaEditarAlumno = async (req, res)=> {
     const {id} = (req.params)
     //console.log(id)
-   let idValue = id;
+   let idValueAl = id;
     try
-    {const editarDetallesAlumno = await Alumno.findAll({attributes: ['cursoAl','nombreAl','localidadAl', 'emailAl', 'empresaAl', 'contactoEmp', 'practicas', 'OBSERVACIONES'], 
-        where:{id: idValue}})
+    {const editarDetallesAlumno = await Alumno.findAll({attributes: ['cursoAl','nombreAl','localidadAl', 'emailAl', 
+            'empresaAl', 'contactoEmp', 'practicas', 'OBSERVACIONES', 'id'], 
+        where:{id: idValueAl}})
         editarDetallesAlumno.forEach(alumno=>(console.log(alumno.id)))
     
         res.render('editarAlumno', {
@@ -152,7 +176,8 @@ export {
     paginaEditarEmpresa,
     paginaDetallesEmpresa,
     paginaDetallesAlumno,
-    paginaEditarAlumno
+    paginaEditarAlumno,
+    
     
     
 

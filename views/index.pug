@@ -37,58 +37,40 @@ html(lang='en')
         .col-md-2.text-center
           a.btn-lg.btn-primary.btn-block(href='/nuevaempresa') Nueva Empresa
     |       
+    
+    
     .itemH2
       h2 BUSCADOR DE PRÁCTICAS
     |     
     #Buscador.row.col-md-12.offset-md-4(style='margin-top: 20px')
-
-    
-      .form-group.col-md-2
-        label(for='curso') Curso
-        |         
-        select#curso(onchange='seleccionCurso(this)').form-control
-            each curso in cursos
-              option(value=curso.value selected=curso.select) #{curso}
-                
-
-                script.
-                 var cursoSeleccionado;
-                 function seleccionCurso(seleccion)
-                  {
-                      cursoSeleccionado = seleccion.value;
-                      return cursoSeleccionado
-                  }  
-                  console.log(`${cursoSeleccionado}`)
+         
                   
+                  form(id="myForm" action='' method="POST").form-group.col-md-2       
+                      label(for='curso') Curso
+                        input(type='text' name="curso") 
+                        input(type='submit')
+                      
 
+                      
+                    
+  
 
+  table.table   
+      thead.thead-light
+          tr           
+            th(scope="col") Empresa                          
+            th(scope="col") Contacto                          
+            th(scope="col") E-MAIL                         
+            th(scope="col") TELEFONO                           
+            th(scope="col") PRACTICAS    
 
-    
-      .form-group.col-md-2
-          - var name = 'CFGMVDJ' 
-            case (`${curso}`)
-                when "CFGSS"
-                  label(for='practicas') practicasSonido         
-                  select#practicas.form-control
-                      each practica in practicasGradoMedio
-                        option= practica
-
-                when "CFGMVDJ"
-                  label(for='practicas') Prácticas         
-                  select#practicas.form-control
-                      each practica in practicasGradoMedio
-                        option= practica        
-
-                default 
-                  label(for='practicas') Prácticas         
-                  select#practicas.form-control
-                      each practica in tiposPracticas
-                        option= practica   
-     
-    |     
-    #btnBuscar.btn.btn-success.col-md-2.offset-md-5(type='submit')  BUSCAR 
-     
-h3= `${curso}`
+          each empresa in seleccionEmpresas
+                tr
+                    td= empresa.EMPRESA                  
+                    td= empresa.CONTACTO                  
+                    td= empresa.EMAIL 
+                    td= empresa.TELEFONO
+                    td= empresa.PRACTICAS
     
         
   

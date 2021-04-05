@@ -1,0 +1,4 @@
+{
+    "less.lint.propertyIgnoredDueToDisplay": "error",
+    "less.lint.importStatement": "error"
+}

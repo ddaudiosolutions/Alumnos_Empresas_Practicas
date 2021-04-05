@@ -9,7 +9,8 @@ import {
         paginaDetallesEmpresa,
         paginaEditarEmpresa,
         paginaEditarAlumno,
-        paginaDetallesAlumno
+        paginaDetallesAlumno,
+        
 
     } from '../controllers/paginasControllers.js'
 
@@ -32,6 +33,8 @@ import{
 const router = express.Router();
 
 router.get('/', paginaInicio );
+
+router.post('/', paginaInicio );
 
 router.get('/listadoalumnos', paginaAlumnos);
 
