@@ -25,7 +25,13 @@ export const Empresa = db.define('Empresas', {
             type: Sequelize.NUMBER,
             primaryKey: true
 
-        }
+        },
+        CFGSS: { type: Sequelize.BOOLEAN},       
+        CFGSR : { type: Sequelize.BOOLEAN},
+        CFGMVDJ : { type: Sequelize.BOOLEAN},
+        CFGSI : { type: Sequelize.BOOLEAN},
+        CFGSA : { type: Sequelize.BOOLEAN},
+        CFGSP : { type: Sequelize.BOOLEAN},
        
 
 })

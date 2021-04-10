@@ -42,19 +42,27 @@ html(lang='en')
     .itemH2
       h2 BUSCADOR DE PRÁCTICAS
     |     
-    #Buscador.row.col-md-12.offset-md-4(style='margin-top: 20px')
-         
+    #Buscador.row.col-md-12.offset-md-5(style='margin-top: 20px')         
                   
-                  form(id="myForm" action='' method="POST").form-group.col-md-2       
-                      label(for='curso') Curso
-                        input(type='text' name="curso") 
-                        input(type='submit')
-                      
-
-                      
+                  form(id="myForm" action='/' method="POST").form-group.col-md-2                      
                     
-  
+                    .form-row
+                      label(for='curso') Cursos                         
+                        select(name='cursosS').form-control
+                          each curso in cursos
+                              option= curso 
+                              
+                    .form-row
+                      label(for='practicaSelect') Prácticas    
+                        select(name="practicaSelect").form-control
+                          each practica in tiposPracticas
+                              option= practica
 
+                             
+                          
+                    .btn.col-md-12
+                      input(type="submit", value='Guardar').btn.btn-success                            
+      
   table.table   
       thead.thead-light
           tr           

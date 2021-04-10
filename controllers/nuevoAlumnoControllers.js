@@ -1,7 +1,7 @@
 import {Alumno} from '../models/Alumnos.js'
 const guardarNuevoAlumno = async (req, res)=>{
 
-    const {cursoAl, nombreAl, localidadAl, emailAl, empresaAl, contactoEmp, practicas} = req.body;
+    const {cursoAl, nombreAl, localidadAl, emailAl, empresa, contactoEmp, practicas} = req.body;
     //console.log(req.body.id)
 
     try{
@@ -11,7 +11,7 @@ const guardarNuevoAlumno = async (req, res)=>{
             nombreAl, 
             localidadAl, 
             emailAl, 
-            empresaAl, 
+            empresaAl: empresa, 
             contactoEmp, 
             practicas
 

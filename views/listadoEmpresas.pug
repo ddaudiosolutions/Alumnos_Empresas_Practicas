@@ -13,37 +13,68 @@ html(lang='en')
     |     
     title Document
   body#body1
+  .row
+    .col-md-12.text-center.mt-4
+      h3 LISTADO DE EMPRESAS
+  
+
+  .row
+    .col-md-12.text-center.mt-4
+      h3 CONSULTAR LISTADO DE EMPRESAS
+  .row      
+    .col-md-12.offset-md-5(style='margin-top: 20px')
+
+      
+        
+                    form(id="myForm" action='/listadoempresas' method="POST").form-group.col-md-2                   
+                      
+                      .form-row
+                        label(for='curso') Cursos                         
+                          select(name='cursosS').form-control
+                            each curso in cursos
+                                option= curso 
+                                
+                      .form-row
+                        label(for='practicaSelect') Prácticas    
+                          select(name="practicaSelect").form-control
+                            each practica in tiposPracticas
+                                option= practica
+                          
+                            
+                      .btn.col-md-12
+                        input(type="submit", value='Buscar').btn.btn-success  
+   
     table.table
-      thead.thead-dark
-          tr           
-            th(scope="col") Empresa                          
-            th(scope="col") Contacto                          
-            th(scope="col") E-MAIL                         
-            th(scope="col") TELEFONO                           
-            th(scope="col") PRACTICAS                          
-            th(scope="col") Editar
+        thead.thead-dark
+            tr           
+              th(scope="col") Empresa                          
+              th(scope="col") Contacto                          
+              th(scope="col") E-MAIL                         
+              th(scope="col") TELEFONO                           
+              th(scope="col") PRACTICAS                          
+              th(scope="col") Editar
       
       
-          each empresa in empresas
-                  tr
-                    td= empresa.EMPRESA                  
-                    td= empresa.CONTACTO                  
-                    td= empresa.EMAIL 
-                    td= empresa.TELEFONO
-                    td= empresa.PRACTICAS
-                    td
-                      a(href=`/empresa/${empresa.id}`) 
-                        button(type= button).form-control Mostrar
-                    td
-                      a(href=(`/editarempresa/${empresa.id}`)) 
-                        button(type= button ).form-control Editar    
+                each empresa in seleccionEmpresas
+                        tr
+                          td= empresa.EMPRESA                  
+                          td= empresa.CONTACTO                  
+                          td= empresa.EMAIL 
+                          td= empresa.TELEFONO
+                          td= empresa.PRACTICAS
+                          td
+                            a(href=`/empresa/${empresa.id}`) 
+                              button(type= button).form-control Mostrar
+                          td
+                            a(href=(`/editarempresa/${empresa.id}`)) 
+                              button(type= button ).form-control Editar    
                       
     
     
 
-    |
-    button.btn.btn-success(type='button', onclick="window.location='/'") Volver al Menu
+    .btn.col-md-12
+      button.btn.btn-success.text-center(type='button', onclick="window.location='/'") Volver al Menu
     | 
-    h2 nueva linea   
+  
     |     
     script(src='/js/mostrarEmpresas.js', type='module')

@@ -1,55 +1,70 @@
 import {Empresa} from '../models/Empresas.js'
 import {Alumno} from '../models/Alumnos.js'
-import tiposPracticas from '../public/tiposPracticas.js'
-import {practicasGradoMedio, practicasSonido} from '../public/seleccionPracticas.js';
+import {tiposPracticas} from '../public/tiposPracticas.js'
+
 import {cursos} from '../public/tiposCursos.js';
-import buscadorEmpresas from '../controllers/buscadorEmpresas.js'
-import { request } from 'express';
+
+import pkg, { Sequelize } from 'sequelize';
+
+const {Model, DataTypes, Op} = pkg;
 
 
 
 
 const paginaInicio = async (req, res)=> {
     
-    const {curso} = req.body
-    console.log(curso)
-   // let empValue = EMPRESA //recibir valor de la opcion seleccionada
-    
+    const {cursosS, practicaSelect} = req.body; //toma el name dentro de 'Select'
+       console.log(cursosS + ' esto es para ' + practicaSelect)
+   
     
     const seleccionEmpresas = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 
     'TELEFONO', 'PRACTICAS', 'OBSERVACIONES', 'id'], 
-    where:{PRACTICAS : curso}})
-    seleccionEmpresas.forEach(empresa=>console.log(empresa))
+        where:{
+
+            PRACTICAS : {[Op.or]:
+                [Sequelize.where(Sequelize.col('PRACTICAS'), 'LIKE', '%'+practicaSelect+'%')]},
+            }})
+    
     
     
 
     res.render('index', {
         pagina: 'Inicio',
         tiposPracticas,
-        practicasGradoMedio,
-        practicasSonido,
+        
         cursos,
         seleccionEmpresas,
-        buscadorEmpresas,
-        
-        
-        
        
+        cursosS,
+        practicaSelect
                 //seleccionPracticas 
     });
 }
 
 const paginaEmpresas = async (req, res)=> {
+    const {cursosS, practicaSelect} = req.body; //toma el name dentro de 'Select'
     
+    //console.log(cursosS + ' esto es para ' + practicaSelect)
     try
-    {const empresas = await Empresa.findAll()
-   
+        {const seleccionEmpresas = await Empresa.findAll({attributes: ['EMPRESA','CONTACTO','EMAIL', 'TELEFONO', 'PRACTICAS', 
+        'OBSERVACIONES', 'id', 'CFGMVDJ', 'CFGSS', 'CFGSR', 'CFGSI', 'CFGSA', 'CFGSP'], 
+                where:{
+                    PRACTICAS : {[Op.or]: [Sequelize.where(Sequelize.col('PRACTICAS'), 'LIKE', '%'+practicaSelect+'%')]},                       
+                    
+                }}) 
+                     
     
-        res.render('listadoEmpresas', {
-            pagina: 'Listado Empresas',
-            empresas,
+        
+            res.render('listadoEmpresas', {
+                pagina: 'Listado Empresas',
+                
+                cursos,
+                cursosS,
+                tiposPracticas,
+                practicaSelect,
+                seleccionEmpresas
 
-    })}
+        })}
     catch (error){
         console.log(error)
     }
@@ -104,13 +119,34 @@ const paginaNuevaEmpresa = async(req, res)=>{
 
 
 const paginaAlumnos = async(req, res)=>{
+    const {cursosS, practicaSelect} = req.body; //toma el name dentro de 'Select'
+       //console.log(cursosS + ' esto es para ' + practicaSelect)
+    
     try{
-        const alumnos = await Alumno.findAll() 
+        const seleccionAlumnos = await Alumno.findAll({attributes: ['cursoAl','nombreAl','localidadAl', 'emailAl', 
+            'empresaAl', 'contactoEmp', 'practicas', 'OBSERVACIONES', 'id'], 
+            where:{   
+                    [Op.or]: [                        
+                                {cursoAl : {[Op.or]: [Sequelize.where(Sequelize.col('cursoAl'), 'LIKE', '%'+cursosS+'%')]}},
+                                {practicas : {[Op.or]: [Sequelize.where(Sequelize.col('practicas'), 'LIKE', '%'+practicaSelect+'%')]}},
+                            
+                                {[Op.and] :[
+                                    {cursoAl : {[Op.and]: [Sequelize.where(Sequelize.col('cursoAl'), 'LIKE', '%'+cursosS+'%')]}},
+                                    {practicas : {[Op.and]: [Sequelize.where(Sequelize.col('practicas'), 'LIKE', '%'+practicaSelect+'%')]}}
+
+                                ]}
+                        ],
+                }})
+        
         res.render('listadoAlumnos', {
             pagina:'Listado Alumnos',
-            alumnos
+            cursosS,
+            cursos,
+            tiposPracticas,
+            practicaSelect,
+            seleccionAlumnos
     })}
-    catch{ (error)
+    catch(error){
         console.log(error)
     }
 }

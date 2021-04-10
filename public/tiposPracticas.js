@@ -1,8 +1,13 @@
  
  
  const tiposPracticas = [
-    ' ',
-    'SonidoDirecto',    
+    'Selecciona',
+    'SonidoDirecto',  
+    'Sonido',
+    'Video',
+    'Guion',
+    'Montaje',
+    'Iluminacion',  
     'Radio',
     'EstudiodeGrabación',
     'Teatro',
@@ -28,4 +33,4 @@
 
 
 
-export default tiposPracticas ;
+export {tiposPracticas} ;

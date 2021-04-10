@@ -37,10 +37,13 @@ router.get('/', paginaInicio );
 router.post('/', paginaInicio );
 
 router.get('/listadoalumnos', paginaAlumnos);
+router.post('/listadoalumnos', paginaAlumnos);
 
 router.get('/alumno/:id', paginaDetallesAlumno)
 
 router.get('/listadoempresas', paginaEmpresas);
+
+router.post('/listadoempresas', paginaEmpresas);
 
 router.get('/empresa/:id', paginaDetallesEmpresa)
 

@@ -12,28 +12,52 @@ html(lang='en')
     |     
     title Document
   body
+    .row
+        .col-md-2.text-center
+          a.btn-lg.btn-danger.btn-block(href='/nuevoalumno') Nuevo Alumno 
+    .row
+
+      .col-md-12.offset-md-5(style='margin-top: 20px')
+      
+                  form(id="myForm" action='/listadoalumnos' method="POST").form-group.col-md-2                   
+                    
+                    .form-row
+                      label(for='curso') Cursos                         
+                        select(name='cursosS').form-control
+                          each curso in cursos
+                              option= curso 
+                              
+                    .form-row
+                      label(for='practicaSelect') Prácticas    
+                        select(name="practicaSelect").form-control
+                          each practica in tiposPracticas
+                              option= practica
+                        
+                          
+                    .btn.col-md-12
+                      input(type="submit", value='Buscar').btn.btn-success  
     table.table
       thead.thead-dark
         tr
-          th(scope='col') Curso
+          th(scope='col') C.F.
           th(scope='col') Nombre                 
           th(scope='col') Localidad                           
           th(scope='col') Email_Alumno                          
-          th(scope='col') Contacto Alumno                           
-          th(scope='col') Practicas                          
-          th(scope='col') Empresa                          
+          th(scope='col') Practicas                            
+          th(scope='col') Empresa                         
           th(scope='col') Contacto Emp.                          
+          th(scope='col') Mostrar                          
           th(scope='col') Editar
               
-            each alumno in alumnos
+            each alumno in seleccionAlumnos
                   tr
                     td= alumno.cursoAl                  
                     td= alumno.nombreAl
                     td= alumno.localidadAl 
                     td= alumno.emailAl 
-                    td= alumno.empresaAl 
+                    td= alumno.practicas 
+                    td= alumno.empresaAl
                     td= alumno.contactoEmp
-                    td= alumno.practicas
                     td
                       a(href=`alumno/${alumno.id}`) 
                         button(type= button).form-control Mostrar
